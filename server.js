@@ -28,6 +28,6 @@ app.get('/', asyncHandler(async (req, res) => {
 
 app.use('/api/users', userRoutes)
 
-const PORT  = 5000
+const PORT  = 5001
 
 app.listen(PORT, console.log(`server running on port ${PORT}`))
