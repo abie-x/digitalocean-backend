@@ -6,6 +6,8 @@ import userRoutes from './routes/userRoutes.js'
 import User from "./models/userModel.js";
 import asyncHandler from 'express-async-handler'
 import res from "express/lib/response.js";
+import City from "./models/cityModel.js";
+import cityRoutes from './routes/cityRoutes.js'
 
 
 //configuring the environmnt variables
@@ -21,12 +23,13 @@ const app =  express()
 
 app.use(express.json())
 
-app.get('/', asyncHandler(async (req, res) => {
-    const allUsers = await User.find({})
-    res.status(200).send(allUsers)
-}))
-
 app.use('/api/users', userRoutes)
+app.use('/api/cities', cityRoutes)
+
+app.get('/', asyncHandler(async (req, res) => {
+    const allCities  = await City.find({})
+    res.status(200).send(allCities)
+}))
 
 const PORT  = 5001
 
